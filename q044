@@ -1,0 +1,31 @@
+int search_Fibonachi(const int size, int z) {
+	int k = 0;
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++) {//заполнение таблицы данными  четными числами
+		arr[i] = 2 * (i + 1);
+	}
+	for (; realiz_Fibonachi(k + 1) < size + 1; ) {
+		k += 1;
+	}
+	int i = realiz_Fibonachi(k), p = realiz_Fibonachi(k - 1), q = realiz_Fibonachi(k - 2);
+	int rezul = -1, count = 0;
+	while (p >= 1 and q >= 0) {
+		if (z == arr[i]) {
+			break;
+		}
+		if (z < arr[i]) {
+			i = i - q;
+			int temp = q;
+			q = p - q;
+			p = temp;
+		}
+		if (z > arr[i]) {
+			i = i + q;
+			p = p - q;
+			q = q - p;
+		}
+		count++;
+	}
+	delete[]arr;
+	return count;
+}
